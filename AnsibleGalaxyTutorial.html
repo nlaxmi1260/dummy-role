@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ansible Roles with Demo</title>
+</head>
+<body>
+    <ol>Ansible roles with Demo
+        <li>Ansible Galaxy - Exploring pre-built ansible roles 
+            <ol>
+                <li>in ansible-galaxy there are multiple number of ansible roles  which are built in</li>
+                <li>ansible-galaxy is install with ansible <br>
+                $ ansible-galaxy -h <br>
+                mainly used for <b> collections,role</b> <br>
+                $ ansible-galaxy role -h <br>
+                list some role commands
+                </li>
+            </ol>
+        </li>
+        <li>Ansible Galaxy - importing and installing roles <br>
+            $ ansible-galaxy role -h
+
+        </li>
+        <li>How can we use the Docker ansible roles that is there in the ansible-galaxy
+            <ol>
+                <li>login ansible-galaxy with github account </li>
+                <li> ansible-galaxy we can loged in </li>
+                <li>In ansible-galaxy copy the command <br>
+                    $ ansible-galaxy role install bsmeding.docker <br>
+                    bsmeding.docker role is installed.To check role where it installed <br>
+                    $ ls ~/.ansible/roles 
+                </li>
+                <li>After installing the role how we can use the role <br>
+                we have to create a playbook - <b> userole.yaml</b> <br>
+                </li>
+                <li>To run the file <br>
+                $ ansible-playbook -i inventory.ini userole.yaml
+                </li>
+                <li>to check docker is installed or not on target mechine <br>
+                $ docker
+                </li>
+            </ol>
+        </li>
+        <li>How to publish roles in the ansible-galaxy 
+            <ol>
+                <li>To publish roles in ansible-galaxy <br> 
+                  ansible roles should always be put in github <br>
+                  Should be imported into the ansible-galaxy
+                </li>
+                <li> if we have created a role then go to the role <br>
+                     $ cd httpd <br>
+                     goto the github and create a new repo - dummy repo <br>
+                     $ git init <br>
+                     copy the https url of git repo <br>
+                      $ git remote add  origin https://github.com/nlaxmi1260/dummy-role.git <br>
+                      $ git remote -v <br>
+                      $ git add . <br>
+                      $ git commit -m "initial files" <br>
+                      $ git push origin main <br> 
+                </li>
+                <li>our role will be pushed to github repo ,now i hv to push ansible-galaxy <br>
+                $ ansible-galaxy import githubusername nameofTheRepo <br>
+                we will get authenication error <br>
+                go to ansible-galaxy -> collections -> api token -> load the token  ->copy token <br>
+                $ ansible-galaxy import githubusername nameofTheRepo --token tokenId
+
+                </li>
+            </ol>
+        </li>
+        <li>Demo :Advanced usage of Ansible roles with a practical
+             example project</li>
+        <li>Best practices for organising roles and playbook structure</li>
+    </ol>
+</body>
+</html>
